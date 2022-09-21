@@ -1,0 +1,56 @@
+*{
+  font-family: 'Limelight', cursive;
+  color: #283618;
+}
+
+/* HOME PAGE */
+body {
+  display: flex;
+  justify-content: space-around;
+}
+
+h1, h2, .player-description, .player-token {
+  font-size: 2.2em;
+  margin: 5px;
+  text-shadow: 1px 1px 3px #606c38;
+}
+
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  background-color: #dda15e;
+  width: 60%;
+  justify-content: space-evenly;
+}
+
+.player-info {
+  background-color: #fefae0;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-selector {
+  background-color: #fefae0;
+  padding: 19px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 10px solid #606c38;
+  border-radius: 15px;
+  width: 55%;
+}
+.rule, .user-instructions, .player-wins-counter {
+  font-size: 1.4em;
+  padding: 1px;
+  margin: 5px;
+}
+
+
+.page-title {
+
+}
