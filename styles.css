@@ -9,12 +9,23 @@ body {
   justify-content: space-around;
 }
 
-h1, h2, .player-description, .player-token {
+h1, h2 {
+  font-family: "Pacifico";
   font-size: 2.2em;
   margin: 5px;
-  text-shadow: 1px 1px 3px #606c38;
+
 }
 
+ h2, .player-token {
+  font-size: 2.2em;
+  margin: 5px;
+}
+
+.player-description {
+  font-family: "Pacifico", sans-serif;
+  font-size: 2.2em;
+  margin: 5px;
+}
 
 .main-page {
   display: flex;
@@ -40,7 +51,7 @@ h1, h2, .player-description, .player-token {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 10px solid #606c38;
+  border: 14px solid #606c38;
   border-radius: 15px;
   width: 55%;
 }
@@ -50,7 +61,22 @@ h1, h2, .player-description, .player-token {
   margin: 5px;
 }
 
-
-.page-title {
-
+.hidden {
+  display: none;
 }
+
+/*GAME INFO*/
+
+
+img {
+  border: 14px solid #606c38;
+  border-radius: 15px;
+  width: 200px;
+  height: 200px;
+}
+
+/* .images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
