@@ -17,7 +17,7 @@ images.addEventListener('click', playGame)
 changeGameButton.addEventListener('click', displayMenu)
 
 function startGame() {
- newGame = new Game
+  newGame = new Game
  console.log(newGame)
 }
 
@@ -47,6 +47,7 @@ function computerMove(array) {
 
 // pass in the event
 function playGame(event) {
+  userInstructions.innerText = ""
   if(event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Bear") {
     console.log("You won!")
     userInstructions.innerText = "You won!"
@@ -81,9 +82,12 @@ function playGame(event) {
 function updateScore(userInstructions) {
   if(userInstructions.innerText === "You won!") {
     newGame.player1.wins += 1
-  } else if (userInstructions.innerText = "You lost! One point for the computer") {
+  } else if (userInstructions.innerText === "You lost! One point for the computer") {
     newGame.player2.wins +=1
   }
+  //  else if (userInstructions.innerText = "It's a draw!") {
+  //   newGame.player2.wins
+  //   newGame.player1.wins
   winsCounterHuman.innerText = newGame.player1.wins
   winsCounterComputer.innerText = newGame.player2.wins
 }
