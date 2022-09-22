@@ -9,12 +9,30 @@ body {
   justify-content: space-around;
 }
 
-h1, h2, .player-description, .player-token {
-  font-size: 2.2em;
-  margin: 5px;
-  text-shadow: 1px 1px 3px #606c38;
+.title-and-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
+h1, h2 {
+  font-family: "Pacifico";
+  font-size: 2.2em;
+  margin: 5px;
+
+}
+
+ h2, .player-token {
+  font-size: 2.2em;
+  margin: 5px;
+}
+
+.player-description {
+  font-family: "Pacifico", sans-serif;
+  font-size: 2.2em;
+  margin: 5px;
+}
 
 .main-page {
   display: flex;
@@ -25,10 +43,16 @@ h1, h2, .player-description, .player-token {
   width: 60%;
   justify-content: space-evenly;
 }
-
-.player-info {
+/*Come back to this, to format the button*/
+.player-info, .player-info-and-button {
   background-color: #fefae0;
   width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.player1-info{
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -40,17 +64,41 @@ h1, h2, .player-description, .player-token {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 10px solid #606c38;
+  border: 14px solid #606c38;
   border-radius: 15px;
   width: 55%;
 }
-.rule, .user-instructions, .player-wins-counter {
+.rule, .user-instructions, .wins-label {
   font-size: 1.4em;
   padding: 1px;
   margin: 5px;
 }
 
+.hidden {
+  display: none;
+}
 
-.page-title {
+/*GAME INFO*/
 
+button {
+  border: 4px solid #606c38;
+  border-radius: 1px;
+  background-color: #fefae0;
+}
+img {
+  width: 175px;
+  height: 175px;
+}
+
+.park-ranger-icon {
+  width: 220px;
+  height: 220px;
+}
+/* .images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
+.images {
+  border: 1px, solid, red
 }
