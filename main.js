@@ -1,7 +1,7 @@
 var choices = ['Park Ranger', 'Wild Fire', 'Bear']
 var playerChoice
 var computerChoice
-var newGame
+var currentGame
 
 var classicGameSelector = document.querySelector('#classicGameSelector')
 var userInstructions = document.querySelector('.user-instructions')
@@ -11,15 +11,36 @@ var changeGameButton = document.querySelector('.change-game')
 var winsCounterHuman = document.querySelector('#winsCounterHuman')
 var winsCounterComputer = document.querySelector('#winsCounterComputer')
 
-window.addEventListener('load', startGame)
-classicGameSelector.addEventListener('click', displayClassicGame)
-images.addEventListener('click', playGame)
+var gameTypeSelector = document.querySelector('.main-page')
+
+//window.addEventListener('load', startGame)
+gameTypeSelector.addEventListener('click', selectGameType)
+//classicGameSelector.addEventListener('click', displayClassicGame)
+// images.addEventListener('click', function () {
+//   currentGame.playClassicGame()
+// })
+
+images.addEventListener('click', playClassicGame)
+
 changeGameButton.addEventListener('click', displayMenu)
 
-function startGame() {
-  newGame = new Game
- console.log(newGame)
-}
+function selectGameType(event) {
+  if (event.target.id === 'classicGameSelector') {
+    currentGame = new Game(event.target.id)
+    currentGame.displayGame(event.target.id)
+  } else if (event.target.id === 'difficultGameSelector') {
+    var currentGame = new Game(event.target.id)
+    currentGame.displayGame(event.target.id)
+  // } else {
+  //   console.log("please select a game") /*this needs work but could be an error message added to the innerHTML*/
+  }
+
+  // if (event.target.ID.contains(classicGameSelector)) {
+  //   console.log("classicGame")
+  }
+//   newGame = new Game() //pass in classic or difficult
+//  console.log(newGame)
+// }
 
 function displayMenu() {
   userInstructions.innerText = "Choose your game!"
@@ -29,15 +50,8 @@ function displayMenu() {
   changeGameButton.classList.add('hidden')
 }
 
-function displayClassicGame() {
-  userInstructions.innerText = "Choose your fighter!"
-  difficultGameSelector.classList.add('hidden')
-  classicGameSelector.classList.add('hidden')
-  images.classList.remove('hidden')
-  changeGameButton.classList.remove('hidden')
-  computerMove(choices)
-  console.log(computerChoice)
-}
+// function displayClassicGame() {
+
 
 function computerMove(array) {
  var number = Math.floor(Math.random() * array.length)
@@ -46,7 +60,8 @@ function computerMove(array) {
 }
 
 // pass in the event
-function playGame(event) {
+
+function playClassicGame(event) {
   userInstructions.innerText = ""
   if(event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Bear") {
     console.log("You won!")
@@ -79,17 +94,18 @@ function playGame(event) {
   updateScore(userInstructions)
 }
 
+
 function updateScore(userInstructions) {
   if(userInstructions.innerText === "You won!") {
-    newGame.player1.wins += 1
+    currentGame.player1.wins += 1
   } else if (userInstructions.innerText === "You lost! One point for the computer") {
-    newGame.player2.wins +=1
+    currentGame.player2.wins +=1
   }
   //  else if (userInstructions.innerText = "It's a draw!") {
   //   newGame.player2.wins
   //   newGame.player1.wins
-  winsCounterHuman.innerText = newGame.player1.wins
-  winsCounterComputer.innerText = newGame.player2.wins
+  winsCounterHuman.innerText = currentGame.player1.wins
+  winsCounterComputer.innerText = currentGame.player2.wins
 }
 
 
