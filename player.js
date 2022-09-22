@@ -9,3 +9,7 @@ class Player {
 //Could this be my playGame function?
   }
 }
+
+// var compterPlayer = new Player('computer', '💻')
+//
+// computerPlayer.takeTurn()
