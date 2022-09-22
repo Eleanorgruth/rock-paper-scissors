@@ -1,12 +1,15 @@
 var choices = ['Park Ranger', 'Wild Fire', 'Bear']
 var playerChoice
 var computerChoice
+var newGame
 
 var classicGameSelector = document.querySelector('#classicGameSelector')
 var userInstructions = document.querySelector('.user-instructions')
 var difficultGameSelector = document.querySelector('#difficultGameSelector')
 var images = document.querySelector('.images')
 var changeGameButton = document.querySelector('.change-game')
+var winsCounterHuman = document.querySelector('#winsCounterHuman')
+var winsCounterComputer = document.querySelector('#winsCounterComputer')
 
 window.addEventListener('load', startGame)
 classicGameSelector.addEventListener('click', displayClassicGame)
@@ -14,9 +17,8 @@ images.addEventListener('click', playGame)
 changeGameButton.addEventListener('click', displayMenu)
 
 function startGame() {
- var newGame = new Game
+ newGame = new Game
  console.log(newGame)
- newGame.player1.wins = 1
 }
 
 function displayMenu() {
@@ -73,8 +75,22 @@ function playGame(event) {
     console.log("It's a draw!")
     userInstructions.innerText = "It's a draw!"
   }
+  updateScore(userInstructions)
 }
 
-// function updateScore(userInstructions.innerText) {
-//
-// }
+function updateScore(userInstructions) {
+  if(userInstructions.innerText === "You won!") {
+    newGame.player1.wins += 1
+  } else if (userInstructions.innerText = "You lost! One point for the computer") {
+    newGame.player2.wins +=1
+  }
+  winsCounterHuman.innerText = newGame.player1.wins
+  winsCounterComputer.innerText = newGame.player2.wins
+}
+
+
+//on the page load, we are starting a new instance of game which hold the player classes(which hold the scores)
+//we want to update the socres if the innerText is "you won", or the compter won
+//We also need the win counter to be a direct reflection of the data modole (player.wins)
+
+// for now, just update the data model
