@@ -5,6 +5,7 @@ class Player {
     this.wins = 0
   }
   takeTurn() {
-//what each player selects 
+//what each player selects
+//Could this be my playGame function?
   }
 }
