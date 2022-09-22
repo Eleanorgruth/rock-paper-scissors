@@ -47,7 +47,7 @@ function computerMove(array) {
 
 // pass in the event
 function playGame(event) {
-  userInstructions.innerText = ""
+//  userInstructions.innerText = ""
   if(event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Bear") {
     console.log("You won!")
     userInstructions.innerText = "You won!"

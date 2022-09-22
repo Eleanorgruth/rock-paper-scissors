@@ -7,14 +7,22 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
   </head>
   <body>
-    <section class="player-info">
-      <p class="player-token">👩🏻</p>
-      <p class="player-description">Human</p>
-      <p class="player-wins-counter">Wins: 0</p>
-    </section>
+    <div class="player-info">
+      <section class="player1-info">
+        <p class="player-token">👩🏻</p>
+        <p class="player-description">Human</p>
+        <p class="wins-label">Wins: </p>
+        <p class="wins-counter" id="winsCounterHuman">0</p>
+      </section>
+      <div class="button-change-game">
+        <button class="change-game hidden">Change game?</button>
+      </div>
+  </div>
     <section class="main-page">
-      <h1 class="page-title">Park Ranger, Bear, Wild Fire</h1>
-      <p class="user-instructions">Choose your game!</p>
+      <div class="title-and-description">
+        <h1 class="page-title">Park Ranger, Bear, Wild Fire</h1>
+        <p class="user-instructions">Choose your game!</p>
+     </div>
       <section class="game-selector" id="classicGameSelector">
         <h2 class="game-type-title">Classic</h2>
         <p class="rule">parker ranger >  wild fire </p>
@@ -23,21 +31,28 @@
       </section>
       <section class="game-selector" id="difficultGameSelector">
         <h2 class="game-type-title">Difficult</h2>
-        <p class="rule">parker ranger >  wild fire </p>
-        <p class="rule">wild fire > bear</p>
-        <p class="rule">bear > parker ranger</p>
-        <p class="rule">bear > parker ranger</p>
+        <p class="rule">parker ranger beats  wild fire </p>
+        <p class="rule">wild fire beats bear</p>
+        <p class="rule">bear beats parker ranger</p>
+        <p class="rule">moose beats parker ranger and </p>
+        <p class="rule">storm beats fire</p>
       </section>
       <section class="images hidden">
-        <img class="bear-icon" src="./assets/bear-icon.png" alt="clipart of a similing bear face, wearing park ranger hat labeled with 'smokey'">
-        <img class="park-ranger-icon" src="./assets/park-ranger-icon.png" alt="">
-        <img class="wildfire-icon"src="./assets/wildfire-icon.png" alt="">
+        <img class="classic-bear-icon" src="./assets/bear.png" alt="clipart of a brown bear cup">
+        <img class="classic-park-ranger-icon" src="./assets/park-ranger2.png" alt="clipart of a women park ranger holding a walkie talkie">
+        <img class="classic-wildfire-icon"src="./assets/wildfire-icon.png" alt="clipart of a fire burning four trees">
+        <img class="difficult-bear-icon hidden" src="./assets/bear.png" alt="clipart of a brown bear cup">
+        <img class="difficult-park-ranger-icon hidden" src="./assets/park-ranger2.png" alt="clipart of a women park ranger holding a walkie talkie">
+        <img class="difficult-wildfire-icon hidden"src="./assets/wildfire-icon.png" alt="clipart of a fire burning four trees">
+        <img class="difficult-moose-icon hidden" src="./assets/moose.png" alt="clipart of moose walking">
+        <img class="difficult-rain-icon hidden" src="./assets/rain.png" alt="clipart of a cloud with rain drops">`
       </section>
     </section>
-    <section class="player-info">
+    <section class="player-info" id="player1">
       <p class="player-token">‍💻</p>
       <p class="player-description">Computer</p>
-      <p class="player-wins-counter">Wins: 0</p>
+      <p class="player-wins-counter">Wins: </p>
+      <p class="wins-counter" id="winsCounterComputer">0</p>
     </section>
     <script src="./game.js"></script>
     <script src="./player.js"></script>
