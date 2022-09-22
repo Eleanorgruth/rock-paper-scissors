@@ -1,4 +1,5 @@
-var choices = ['Park Ranger', 'Wild Fire', 'Bear']
+var classicChoices = ['Park Ranger', 'Wild Fire', 'Bear']
+var difficultChoices = ['Park Ranger', 'Wildfire', 'Bear', 'Moose', 'Storm']
 var playerChoice
 var computerChoice
 var newGame
@@ -11,10 +12,21 @@ var changeGameButton = document.querySelector('.change-game')
 var winsCounterHuman = document.querySelector('#winsCounterHuman')
 var winsCounterComputer = document.querySelector('#winsCounterComputer')
 
+var classicBear = document.querySelector('.classic-bear-icon')
+var classicParkRanger = document.querySelector('.classic-park-ranger-icon')
+var classicWildfire = document.querySelector('.classic-wildfire-icon')
+var difficultBear = document.querySelector('.difficult-bear-icon')
+var difficultParkRanger = document.querySelector('.difficult-park-ranger-icon')
+var difficultWildfire = document.querySelector('.difficult-wildfire-icon')
+var difficultMoose = document.querySelector('.difficult-moose-icon')
+var difficultRain = document.querySelector('.difficult-rain-icon')
+
 window.addEventListener('load', startGame)
+
 classicGameSelector.addEventListener('click', displayClassicGame)
-images.addEventListener('click', playGame)
+images.addEventListener('click', playClassicGame)
 changeGameButton.addEventListener('click', displayMenu)
+difficultGameSelector.addEventListener('click', displayDifficultGame)
 
 function startGame() {
   newGame = new Game
@@ -25,28 +37,51 @@ function displayMenu() {
   userInstructions.innerText = "Choose your game!"
   difficultGameSelector.classList.remove('hidden')
   classicGameSelector.classList.remove('hidden')
-  images.classList.add('hidden')
   changeGameButton.classList.add('hidden')
+  difficultBear.classList.add('hidden')
+  difficultWildfire.classList.add('hidden')
+  difficultParkRanger.classList.add('hidden')
+  difficultMoose.classList.add('hidden')
+  difficultRain.classList.add('hidden')
+  classicBear.classList.add('hidden')
+  classicParkRanger.classList.add('hidden')
+  classicWildfire.classList.add('hidden')
 }
 
-function displayClassicGame() {
+function hideMenu() {
   userInstructions.innerText = "Choose your fighter!"
   difficultGameSelector.classList.add('hidden')
   classicGameSelector.classList.add('hidden')
-  images.classList.remove('hidden')
   changeGameButton.classList.remove('hidden')
-  computerMove(choices)
+}
+
+function displayClassicGame() {
+  hideMenu()
+  classicBear.classList.remove('hidden')
+  classicParkRanger.classList.remove('hidden')
+  classicWildfire.classList.remove('hidden')
+  computerMove(classicChoices)
   console.log(computerChoice)
 }
 
+ function displayDifficultGame() {
+   hideMenu()
+   difficultBear.classList.remove('hidden')
+   difficultWildfire.classList.remove('hidden')
+   difficultParkRanger.classList.remove('hidden')
+   difficultMoose.classList.remove('hidden')
+   difficultRain.classList.remove('hidden')
+
+ }
+
 function computerMove(array) {
  var number = Math.floor(Math.random() * array.length)
-  computerChoice = choices[number]
+  computerChoice = classicChoices[number]
   return computerChoice
 }
 
 // pass in the event
-function playGame(event) {
+function playClassicGame(event) {
 //  userInstructions.innerText = ""
   if(event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Bear") {
     console.log("You won!")
@@ -79,15 +114,16 @@ function playGame(event) {
   updateScore(userInstructions)
 }
 
+function displayGameResults(){
+
+}
+
 function updateScore(userInstructions) {
   if(userInstructions.innerText === "You won!") {
     newGame.player1.wins += 1
   } else if (userInstructions.innerText === "You lost! One point for the computer") {
     newGame.player2.wins +=1
   }
-  //  else if (userInstructions.innerText = "It's a draw!") {
-  //   newGame.player2.wins
-  //   newGame.player1.wins
   winsCounterHuman.innerText = newGame.player1.wins
   winsCounterComputer.innerText = newGame.player2.wins
 }
