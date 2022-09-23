@@ -1,6 +1,7 @@
-var choices = ['Park Ranger', 'Wild Fire', 'Bear']
-var playerChoice
-var computerChoice
+var classicChoices = ['classic-park-ranger', 'classic-wildfire', 'classic-bear']
+var difficultChoices = ['Park Ranger', 'Wildfire', 'Bear', 'Moose', 'Storm']
+// var playerChoice
+// var computerChoice
 var newGame
 
 var classicGameSelector = document.querySelector('#classicGameSelector')
@@ -11,86 +12,187 @@ var changeGameButton = document.querySelector('.change-game')
 var winsCounterHuman = document.querySelector('#winsCounterHuman')
 var winsCounterComputer = document.querySelector('#winsCounterComputer')
 
+var classicBear = document.querySelector('.classic-bear')
+var classicParkRanger = document.querySelector('.classic-park-ranger')
+var classicWildfire = document.querySelector('.classic-wildfire')
+var difficultBear = document.querySelector('.difficult-bear')
+var difficultParkRanger = document.querySelector('.difficult-park-ranger')
+var difficultWildfire = document.querySelector('.difficult-wildfire')
+var difficultMoose = document.querySelector('.difficult-moose')
+var difficultRain = document.querySelector('.difficult-rain')
+
 window.addEventListener('load', startGame)
+
 classicGameSelector.addEventListener('click', displayClassicGame)
-images.addEventListener('click', playGame)
+
+difficultGameSelector.addEventListener('click', displayDifficultGame)
+
+images.addEventListener('click', playerChoice)
+
 changeGameButton.addEventListener('click', displayMenu)
+
 
 function startGame() {
   newGame = new Game
  console.log(newGame)
 }
 
+function hideImages() {
+  difficultBear.classList.add('hidden')
+  difficultWildfire.classList.add('hidden')
+  difficultParkRanger.classList.add('hidden')
+  difficultMoose.classList.add('hidden')
+  difficultRain.classList.add('hidden')
+  classicBear.classList.add('hidden')
+  classicParkRanger.classList.add('hidden')
+  classicWildfire.classList.add('hidden')
+}
+
 function displayMenu() {
   userInstructions.innerText = "Choose your game!"
   difficultGameSelector.classList.remove('hidden')
   classicGameSelector.classList.remove('hidden')
-  images.classList.add('hidden')
   changeGameButton.classList.add('hidden')
+  hideImages()
 }
 
-function displayClassicGame() {
+function displayGameMode() {
   userInstructions.innerText = "Choose your fighter!"
   difficultGameSelector.classList.add('hidden')
   classicGameSelector.classList.add('hidden')
-  images.classList.remove('hidden')
   changeGameButton.classList.remove('hidden')
-  computerMove(choices)
-  console.log(computerChoice)
 }
+
+function displayClassicGame() {
+  displayGameMode()
+  classicBear.classList.remove('hidden')
+  classicParkRanger.classList.remove('hidden')
+  classicWildfire.classList.remove('hidden')
+}
+
+ function displayDifficultGame() {
+   displayGameMode()
+   difficultBear.classList.remove('hidden')
+   difficultWildfire.classList.remove('hidden')
+   difficultParkRanger.classList.remove('hidden')
+   difficultMoose.classList.remove('hidden')
+   difficultRain.classList.remove('hidden')
+ }
 
 function computerMove(array) {
  var number = Math.floor(Math.random() * array.length)
-  computerChoice = choices[number]
+  computerChoice = classicChoices[number]
+  console.log(`computerChoice ${computerChoice}`)
   return computerChoice
 }
 
-// pass in the event
-function playGame(event) {
-//  userInstructions.innerText = ""
-  if(event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Bear") {
-    console.log("You won!")
-    userInstructions.innerText = "You won!"
-  } else if (event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Park Ranger") {
-    console.log("You lost! One point for the computer")
-    userInstructions.innerText = "You lost! One point for the computer"
-  } else if (event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Wild Fire") {
-    console.log("It's a draw!")
-    userInstructions.innerText = "It's a draw!"
-  } else if (event.target.classList.contains("classic-bear-icon") && computerChoice === 'Wild Fire') {
-    console.log("You lost! One point for the computer")
-    userInstructions.innerText = "You lost! One point for the computer"
-  } else if(event.target.classList.contains("classic-bear-icon") && computerChoice === "Park Ranger") {
-    console.log("You won!")
-    userInstructions.innerText = "You won!"
-  } else if(event.target.classList.contains("classic-bear-icon") && computerChoice === "Bear") {
-    console.log("It's a draw!")
-    userInstructions.innerText = "It's a draw!"
-  } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === "Bear") {
-    console.log("You lost! One point for the computer")
-    userInstructions.innerText = "You lost! One point for the computer"
-  } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === 'Wild Fire') {
-    console.log("You won!")
-    userInstructions.innerText = "You won!"
-  } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === "Park Ranger") {
-    console.log("It's a draw!")
-    userInstructions.innerText = "It's a draw!"
-  }
-  updateScore(userInstructions)
+function playerChoice(event) {
+  playerChoice = event.target.classList.value
+  computerMove(classicChoices)
+  compareResults(playerChoice, computerChoice)
+  displayComputerChoice()
+  displayHumanChoice()
+  setTimeout(displayClassicGame, 2000)
 }
 
-function updateScore(userInstructions) {
-  if(userInstructions.innerText === "You won!") {
-    newGame.player1.wins += 1
-  } else if (userInstructions.innerText === "You lost! One point for the computer") {
-    newGame.player2.wins +=1
+function compareResults(playerChoice, computerChoice) {
+  if(playerChoice ==="classic-wildfire" && computerChoice === "classic-bear") {
+      userInstructions.innerText = "You won! Wildfire beats Bear!"
+      newGame.player1.wins += 1
+    } else if (playerChoice ==="classic-wildfire" && computerChoice === "classic-park-ranger") {
+      userInstructions.innerText = "You lost! Park ranger beats wildfire!"
+      newGame.player2.wins +=1
+    } else if (playerChoice ==="classic-wildfire" && computerChoice === "classic-wildfire") {
+      userInstructions.innerText = "It's a draw!"
+    } else if (playerChoice ==="classic-bear" && computerChoice === "classic-wildfire") {
+      userInstructions.innerText = "You lost! Wildfire beats bear!"
+      newGame.player2.wins +=1
+    } else if(playerChoice ==="classic-bear" && computerChoice === "classic-park-ranger") {
+      userInstructions.innerText = "You won! Bear beats park ranger!"
+      newGame.player1.wins += 1
+    } else if(playerChoice ==="classic-bear" && computerChoice === "classic-bear") {
+      userInstructions.innerText = "It's a draw!"
+    } else if(playerChoice ==="classic-park-ranger" && computerChoice === "classic-bear") {
+      newGame.player2.wins +=1
+      userInstructions.innerText = "You lost! Bear beats park ranger!"
+    } else if(playerChoice ==="classic-park-ranger" && computerChoice === 'classic-wildfire') {
+      userInstructions.innerText = "You won! Park ranger beats wildfire!"
+      newGame.player1.wins += 1
+    } else if(playerChoice ==="classic-park-ranger" && computerChoice === "classic-park-ranger") {
+      userInstructions.innerText = "It's a draw!"
+    }
+     updateScore(userInstructions)
   }
-  //  else if (userInstructions.innerText = "It's a draw!") {
-  //   newGame.player2.wins
-  //   newGame.player1.wins
-  winsCounterHuman.innerText = newGame.player1.wins
-  winsCounterComputer.innerText = newGame.player2.wins
-}
+
+  function updateScore(userInstructions) {
+    winsCounterHuman.innerText = newGame.player1.wins
+    winsCounterComputer.innerText = newGame.player2.wins
+  }
+
+function displayComputerChoice() {
+  hideImages()
+  if (computerChoice === "classic-park-ranger") {
+    classicParkRanger.classList.remove('hidden')
+  } else if(computerChoice === "classic-wildfire") {
+    classicWildfire.classList.remove('hidden')
+  } else if (computerChoice === "classic-bear") {
+    classicBear.classList.remove('hidden')
+  }
+  }
+
+  function displayHumanChoice() {
+    if (playerChoice === "classic-park-ranger") {
+      classicParkRanger.classList.remove('hidden')
+    } else if(playerChoice === "classic-wildfire") {
+      classicWildfire.classList.remove('hidden')
+    } else if (playerChoice === "classic-bear") {
+      classicBear.classList.remove('hidden')
+    }
+  }
+
+// function playClassicGame(event) {
+//    playerChoice(event)
+//    computerMove(classicChoices)
+//    compareResults(computerChoice, playerChoice)
+// }
+
+
+// pass in the event
+// function playClassicGame(event) {
+//   if(event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Bear") {
+//     console.log("You won!")
+//     userInstructions.innerText = "You won!"
+//   } else if (event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Park Ranger") {
+//     console.log("You lost! One point for the computer")
+//     userInstructions.innerText = "You lost! One point for the computer"
+//   } else if (event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Wild Fire") {
+//     console.log("It's a draw!")
+//     userInstructions.innerText = "It's a draw!"
+//   } else if (event.target.classList.contains("classic-bear-icon") && computerChoice === 'Wild Fire') {
+//     console.log("You lost! One point for the computer")
+//     userInstructions.innerText = "You lost! One point for the computer"
+//   } else if(event.target.classList.contains("classic-bear-icon") && computerChoice === "Park Ranger") {
+//     console.log("You won!")
+//     userInstructions.innerText = "You won!"
+//   } else if(event.target.classList.contains("classic-bear-icon") && computerChoice === "Bear") {
+//     console.log("It's a draw!")
+//     userInstructions.innerText = "It's a draw!"
+//   } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === "Bear") {
+//     console.log("You lost! One point for the computer")
+//     userInstructions.innerText = "You lost! One point for the computer"
+//   } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === 'Wild Fire') {
+//     console.log("You won!")
+//     userInstructions.innerText = "You won!"
+//   } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === "Park Ranger") {
+//     console.log("It's a draw!")
+//     userInstructions.innerText = "It's a draw!"
+//   }
+//   updateScore(userInstructions)
+//   displayComputerChoice()
+// }
+
+
+
 
 
 //on the page load, we are starting a new instance of game which hold the player classes(which hold the scores)
