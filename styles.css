@@ -91,6 +91,11 @@ img {
   cursor: pointer;
 }
 
+.classic-bear {
+  width: 200px;
+  height: 200px;
+}
+
 .images {
   display: flex;
   flex-direction: row;
