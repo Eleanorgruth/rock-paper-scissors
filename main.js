@@ -15,9 +15,6 @@ var winsCounterComputer = document.querySelector('#winsCounterComputer')
 var classicBear = document.querySelector('.classic-bear')
 var classicParkRanger = document.querySelector('.classic-park-ranger')
 var classicWildfire = document.querySelector('.classic-wildfire')
-var difficultBear = document.querySelector('.difficult-bear')
-var difficultParkRanger = document.querySelector('.difficult-park-ranger')
-var difficultWildfire = document.querySelector('.difficult-wildfire')
 var difficultMoose = document.querySelector('.difficult-moose')
 var difficultRain = document.querySelector('.difficult-rain')
 
@@ -38,9 +35,6 @@ function startGame() {
 }
 
 function hideImages() {
-  difficultBear.classList.add('hidden')
-  difficultWildfire.classList.add('hidden')
-  difficultParkRanger.classList.add('hidden')
   difficultMoose.classList.add('hidden')
   difficultRain.classList.add('hidden')
   classicBear.classList.add('hidden')
@@ -71,10 +65,7 @@ function displayClassicGame() {
 }
 
  function displayDifficultGame() {
-   displayGameMode()
-   difficultBear.classList.remove('hidden')
-   difficultWildfire.classList.remove('hidden')
-   difficultParkRanger.classList.remove('hidden')
+   displayClassicGame()
    difficultMoose.classList.remove('hidden')
    difficultRain.classList.remove('hidden')
  }
