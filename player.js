@@ -7,7 +7,6 @@ class Player {
   }
   humanTakeTurn(event) {
     this.playerChoice = event.target.classList.value
-    console.log(`humanplayer.playerChoice: ${this.playerChoice}`)
   }
   computerMove(array) {
     var number = Math.floor(Math.random() * array.length)
