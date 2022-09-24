@@ -1,7 +1,5 @@
 var classicChoices = ['classic-park-ranger', 'classic-wildfire', 'classic-bear']
-var difficultChoices = ['Park Ranger', 'Wildfire', 'Bear', 'Moose', 'Storm']
-// var playerChoice
-// var computerChoice
+var difficultChoices = ['classic-park-ranger', 'classic-wildfire', 'classic-bear', 'difficult-moose', 'difficult-rain']
 var newGame
 
 var classicGameSelector = document.querySelector('#classicGameSelector')
@@ -86,6 +84,50 @@ function playerChoice(event) {
   setTimeout(displayClassicGame, 2000)
 }
 
+// function compareResults(playerChoice, computerChoice) {
+//   if(playerChoice ==="classic-wildfire" && computerChoice === "classic-bear" || computerChoice === "difficult-moose") {
+//       userInstructions.innerText = "You won!"
+//       newGame.player1.wins += 1
+//     } else if (playerChoice ==="classic-wildfire" && computerChoice === "classic-park-ranger" || computerChoice === "difficult-rain") {
+//       userInstructions.innerText = "You lost!"
+//       newGame.player2.wins +=1
+//     } else if (playerChoice ==="classic-wildfire" && computerChoice === "classic-wildfire") {
+//       userInstructions.innerText = "It's a draw!"
+//     } else if (playerChoice ==="classic-bear" && computerChoice === "classic-wildfire"  || computerChoice === "difficult-moose") {
+//       userInstructions.innerText = "You lost!"
+//       newGame.player2.wins +=1
+//     } else if(playerChoice ==="classic-bear" && computerChoice === "classic-park-ranger" || computerChoice === "difficult-rain") {
+//       userInstructions.innerText = "You won!"
+//       newGame.player1.wins += 1
+//     } else if(playerChoice ==="classic-bear" && computerChoice === "classic-bear") {
+//       userInstructions.innerText = "It's a draw!"
+//     } else if(playerChoice ==="classic-park-ranger" && computerChoice === "classic-bear" || computerChoice === "difficult-rain") {
+//       newGame.player2.wins +=1
+//       userInstructions.innerText = "You lost!"
+//     } else if(playerChoice ==="classic-park-ranger" && computerChoice === 'classic-wildfire' || computerChoice === "difficult-moose") {
+//       userInstructions.innerText = "You won!"
+//       newGame.player1.wins += 1
+//     } else if(playerChoice ==="classic-park-ranger" && computerChoice === "classic-park-ranger") {
+//       userInstructions.innerText = "It's a draw!"
+//     } else if(playerChoice === "difficult-moose" && computerChoice === "classic-bear" || computerChoice === "difficult-rain") {
+//       userInstructions.innerText = "You won!"
+//       newGame.player1.wins += 1
+//     } else if(playerChoice === "difficult-moose" && computerChoice === "classic-wildfire" || computerChoice === "classic-park-ranger") {
+//       userInstructions.innerText = "You lost"
+//       newGame.player2.wins += 1
+//     } else if(playerChoice === 'difficult-moose' && computerChoice === "difficult-moose") {
+//       userInstructions.innerText = "It's a draw!"
+//     } else if(playerChoice === "difficult-rain" && computerChoice === "classic-wildfire" || computerChoice === "classic-park-ranger") {
+//       userInstructions.innerText = "You won!"
+//       newGame.player1.wins += 1
+//     } else if(playerChoice === "difficult-rain" && computerChoice === "difficult-moose" || computerChoice === "classic-bear" ) {
+//       userInstructions.innerText = "You lost"
+//       newGame.player2.wins += 1
+//     } else if(playerChoice === "difficult-rain" && computerChoice === "difficult-rain") {
+//       userInstructions.innerText = "It's a draw!"
+//     }
+// }
+
 function compareResults(playerChoice, computerChoice) {
   if(playerChoice ==="classic-wildfire" && computerChoice === "classic-bear") {
       userInstructions.innerText = "You won! Wildfire beats Bear!"
@@ -128,6 +170,10 @@ function displayComputerChoice() {
     classicWildfire.classList.remove('hidden')
   } else if (computerChoice === "classic-bear") {
     classicBear.classList.remove('hidden')
+  } else if (computerChoice === "difficult-moose") {
+    difficultMoose.classList.remove('hidden')
+  } else if (computerChoice === 'difficult-rain') {
+    difficultRain.classList.remove('hidden')
   }
   }
 
@@ -138,8 +184,12 @@ function displayComputerChoice() {
       classicWildfire.classList.remove('hidden')
     } else if (playerChoice === "classic-bear") {
       classicBear.classList.remove('hidden')
-    }
+    } else if (playerChoice === "difficult-moose") {
+      difficultMoose.classList.remove('hidden')
+    } else if (playerChoice === 'difficult-rain') {
+      difficultRain.classList.remove('hidden')
   }
+}
 
 // function playClassicGame(event) {
 //    playerChoice(event)
