@@ -8,11 +8,11 @@ var changeGameButton = document.querySelector('.change-game')
 var winsCounterHuman = document.querySelector('#winsCounterHuman')
 var winsCounterComputer = document.querySelector('#winsCounterComputer')
 
-var classicBear = document.querySelector('.classic-bear')
-var classicParkRanger = document.querySelector('.classic-park-ranger')
-var classicWildfire = document.querySelector('.classic-wildfire')
-var difficultMoose = document.querySelector('.difficult-moose')
-var difficultRain = document.querySelector('.difficult-rain')
+var classicBear = document.querySelector('.bear')
+var classicParkRanger = document.querySelector('.park-ranger')
+var classicWildfire = document.querySelector('.wildfire')
+var difficultMoose = document.querySelector('.moose')
+var difficultRain = document.querySelector('.storm')
 
 window.addEventListener('load', startGame)
 
@@ -62,7 +62,6 @@ function displayClassicGame() {
 }
 
  function displayDifficultGame() {
-   console.log("TEST")
    displayGameMode()
    currentGame.isClassicGame = false
    classicBear.classList.remove('hidden')
@@ -72,18 +71,6 @@ function displayClassicGame() {
    difficultRain.classList.remove('hidden')
  }
 
-
-// function playerChoice(event) {
-//   playerChoice = event.target.classList.value
-//   computerMove(classicChoices)
-//   compareResults(playerChoice, computerChoice)
-//   displayComputerChoice()
-//   displayHumanChoice()
-//   setTimeout(displayClassicGame, 2000)
-// }
-
-// this HAS to be in the main to call all class methods
- //triggers methods in the game class and player class, still lives in main--
 function runGame(event) {
   currentGame.humanPlayer.humanTakeTurn(event)
   compareResults()
@@ -91,7 +78,6 @@ function runGame(event) {
   resetGame()
   displayComputerChoice()
   displayHumanChoice()
-
 }
 
 function resetGame() {
@@ -105,7 +91,6 @@ function resetGame() {
 function compareResults() {
   if (currentGame.isClassicGame) {
     currentGame.computerPlayer.computerMove(currentGame.classicChoices)
-    console.log(`computerPlayer.playerChoice ${currentGame.computerPlayer.playerChoice}`)
     currentGame.compareClassicResults()
   } else {
     currentGame.computerPlayer.computerMove(currentGame.difficultChoices)
@@ -114,164 +99,40 @@ function compareResults() {
 }
 
 function updateRoundResults(endOfRoundMessage) {
-  userInstructions.innerText = currentGame.endOfRoundMessage
+  userInstructions.innerText = `${currentGame.endOfRoundMessage} \r\n Human choice: ${currentGame.humanPlayer.playerChoice} || Computer choice: ${currentGame.computerPlayer.playerChoice}`
   winsCounterHuman.innerText = currentGame.humanPlayer.wins
   winsCounterComputer.innerText = currentGame.computerPlayer.wins
 }
 
-
 //use for loops to display the results
 function displayComputerChoice() {
   hideImages()
-  if (currentGame.computerPlayer.playerChoice === "classic-park-ranger") {
+  // for (var i = 0; i < currentGame.difficultChoices; i++) {
+  //   if ()
+  // }
+  if (currentGame.computerPlayer.playerChoice === "park ranger") {
     classicParkRanger.classList.remove('hidden')
-  } else if(currentGame.computerPlayer.playerChoice === "classic-wildfire") {
+  } else if(currentGame.computerPlayer.playerChoice === "wildfire") {
     classicWildfire.classList.remove('hidden')
-  } else if (currentGame.computerPlayer.playerChoice === "classic-bear") {
+  } else if (currentGame.computerPlayer.playerChoice === "bear") {
     classicBear.classList.remove('hidden')
-  } else if (currentGame.computerPlayer.playerChoice === "difficult-moose") {
+  } else if (currentGame.computerPlayer.playerChoice === "moose") {
     difficultMoose.classList.remove('hidden')
-  } else if (currentGame.computerPlayer.playerChoice === 'difficult-rain') {
+  } else if (currentGame.computerPlayer.playerChoice === 'storm') {
     difficultRain.classList.remove('hidden')
-  }
-  }
-
-  function displayHumanChoice() {
-    if (currentGame.humanPlayer.playerChoice === "classic-park-ranger") {
-      classicParkRanger.classList.remove('hidden')
-    } else if(currentGame.humanPlayer.playerChoice === "classic-wildfire") {
-      classicWildfire.classList.remove('hidden')
-    } else if (currentGame.humanPlayer.playerChoice === "classic-bear") {
-      classicBear.classList.remove('hidden')
-    } else if (currentGame.humanPlayer.playerChoice === "difficult-moose") {
-      difficultMoose.classList.remove('hidden')
-    } else if (currentGame.humanPlayer.playerChoice === 'difficult-rain') {
-      difficultRain.classList.remove('hidden')
   }
 }
 
-
-// function compareResults(playerChoice, computerChoice) {
-//   if(playerChoice ==="classic-wildfire" && computerChoice === "classic-bear") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if (playerChoice ==="classic-wildfire" && computerChoice === "difficult-moose") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     }else if (playerChoice ==="classic-wildfire" && computerChoice === "classic-park-ranger") {
-//       userInstructions.innerText = "You lost!"
-//       currentGame.computerPlayer.wins +=1
-//     } else if (playerChoice ==="classic-wildfire" && computerChoice === "difficult-rain") {
-//       userInstructions.innerText = "You lost!"
-//       currentGame.computerPlayer.wins +=1
-//     } else if (playerChoice ==="classic-wildfire" && computerChoice === "classic-wildfire") {
-//       userInstructions.innerText = "It's a draw!"
-//     } else if (playerChoice ==="classic-bear" && computerChoice === "classic-wildfire") {
-//       userInstructions.innerText = "You lost!"
-//       currentGame.computerPlayer.wins +=1
-//     } else if (playerChoice ==="classic-bear" && computerChoice === "difficult-moose") {
-//       userInstructions.innerText = "You lost!"
-//       currentGame.computerPlayer.wins +=1
-//     } else if(playerChoice ==="classic-bear" && computerChoice === "classic-park-ranger") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if (playerChoice ==="classic-bear" && computerChoice === "difficult-rain") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if(playerChoice ==="classic-bear" && computerChoice === "classic-bear") {
-//       userInstructions.innerText = "It's a draw!"
-//     } else if(playerChoice ==="classic-park-ranger" && computerChoice === "classic-bear") {
-//       currentGame.computerPlayer.wins +=1
-//       userInstructions.innerText = "You lost!"
-//     } else if(playerChoice ==="classic-park-ranger" && computerChoice === "difficult-rain") {
-//       currentGame.computerPlayer.wins +=1
-//       userInstructions.innerText = "You lost!"
-//     } else if(playerChoice ==="classic-park-ranger" && computerChoice === 'classic-wildfire') {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if (playerChoice ==="classic-park-ranger" && computerChoice === "difficult-moose") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if(playerChoice ==="classic-park-ranger" && computerChoice === "classic-park-ranger") {
-//       userInstructions.innerText = "It's a draw!"
-//     } else if(playerChoice === "difficult-moose" && computerChoice === "classic-bear") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if (playerChoice === "difficult-moose" && computerChoice === "difficult-rain") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if(playerChoice === "difficult-moose" && computerChoice === "classic-wildfire") {
-//       userInstructions.innerText = "You lost"
-//       currentGame.computerPlayer.wins += 1
-//     } else if(playerChoice === "difficult-moose" && computerChoice === "classic-park-ranger") {
-//       userInstructions.innerText = "You lost"
-//       currentGame.computerPlayer.wins += 1
-//     } else if(playerChoice === 'difficult-moose' && computerChoice === "difficult-moose") {
-//       userInstructions.innerText = "It's a draw!"
-//     } else if(playerChoice === "difficult-rain" && computerChoice === "classic-wildfire") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if (playerChoice === "difficult-rain" && computerChoice === "classic-park-ranger") {
-//       userInstructions.innerText = "You won!"
-//       currentGame.humanPlayer.wins += 1
-//     } else if (playerChoice === "difficult-rain" && computerChoice === "classic-bear") {
-//       userInstructions.innerText = "You lost"
-//       currentGame.computerPlayer.wins += 1
-//     }else if(playerChoice === "difficult-rain" && computerChoice === "difficult-moose") {
-//       userInstructions.innerText = "You lost"
-//       currentGame.computerPlayer.wins += 1
-//     } else if(playerChoice === "difficult-rain" && computerChoice === "difficult-rain") {
-//       userInstructions.innerText = "It's a draw!"
-//     }
-//      updateScore(userInstructions)
-//}
-// function playClassicGame(event) {
-//    playerChoice(event)
-//    computerMove(classicChoices)
-//    compareResults(computerChoice, playerChoice)
-// }
-
-
-// pass in the event
-// function playClassicGame(event) {
-//   if(event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Bear") {
-//     console.log("You won!")
-//     userInstructions.innerText = "You won!"
-//   } else if (event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Park Ranger") {
-//     console.log("You lost! One point for the computer")
-//     userInstructions.innerText = "You lost! One point for the computer"
-//   } else if (event.target.classList.contains("classic-wildfire-icon") && computerChoice === "Wild Fire") {
-//     console.log("It's a draw!")
-//     userInstructions.innerText = "It's a draw!"
-//   } else if (event.target.classList.contains("classic-bear-icon") && computerChoice === 'Wild Fire') {
-//     console.log("You lost! One point for the computer")
-//     userInstructions.innerText = "You lost! One point for the computer"
-//   } else if(event.target.classList.contains("classic-bear-icon") && computerChoice === "Park Ranger") {
-//     console.log("You won!")
-//     userInstructions.innerText = "You won!"
-//   } else if(event.target.classList.contains("classic-bear-icon") && computerChoice === "Bear") {
-//     console.log("It's a draw!")
-//     userInstructions.innerText = "It's a draw!"
-//   } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === "Bear") {
-//     console.log("You lost! One point for the computer")
-//     userInstructions.innerText = "You lost! One point for the computer"
-//   } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === 'Wild Fire') {
-//     console.log("You won!")
-//     userInstructions.innerText = "You won!"
-//   } else if(event.target.classList.contains("classic-park-ranger-icon") && computerChoice === "Park Ranger") {
-//     console.log("It's a draw!")
-//     userInstructions.innerText = "It's a draw!"
-//   }
-//   updateScore(userInstructions)
-//   displayComputerChoice()
-// }
-
-
-
-
-
-//on the page load, we are starting a new instance of game which hold the player classes(which hold the scores)
-//we want to update the socres if the innerText is "you won", or the compter won
-//We also need the win counter to be a direct reflection of the data modole (player.wins)
-
-// for now, just update the data model
+  function displayHumanChoice() {
+    if (currentGame.humanPlayer.playerChoice === "park-ranger") {
+      classicParkRanger.classList.remove('hidden')
+    } else if(currentGame.humanPlayer.playerChoice === "wildfire") {
+      classicWildfire.classList.remove('hidden')
+    } else if (currentGame.humanPlayer.playerChoice === "bear") {
+      classicBear.classList.remove('hidden')
+    } else if (currentGame.humanPlayer.playerChoice === "moose") {
+      difficultMoose.classList.remove('hidden')
+    } else if (currentGame.humanPlayer.playerChoice === 'storm') {
+      difficultRain.classList.remove('hidden')
+  }
+}
