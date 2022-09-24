@@ -107,9 +107,10 @@ function updateRoundResults(endOfRoundMessage) {
 //use for loops to display the results
 function displayComputerChoice() {
   hideImages()
-  // for (var i = 0; i < currentGame.difficultChoices; i++) {
+  // for (var i = 0; i < ; i++) {
   //   if ()
   // }
+
   if (currentGame.computerPlayer.playerChoice === "park ranger") {
     classicParkRanger.classList.remove('hidden')
   } else if(currentGame.computerPlayer.playerChoice === "wildfire") {
