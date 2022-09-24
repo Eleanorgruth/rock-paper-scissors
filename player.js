@@ -5,9 +5,13 @@ class Player {
     this.wins = 0
     this.playerChoice
   }
-  // humanTakeTurn/playerChoice(event) {
-  // this.playerChoice = event.target.classList.value
-
-  // }
+  humanTakeTurn(event) {
+    this.playerChoice = event.target.classList.value
+    console.log(`humanplayer.playerChoice: ${this.playerChoice}`)
+  }
+  computerMove(array) {
+    var number = Math.floor(Math.random() * array.length)
+    this.playerChoice = array[number]
+    return this.playerChoice
+  }
 }
-//computerMove()
