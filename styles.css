@@ -67,6 +67,8 @@ h1, h2, .player-token {
   font-size: 1.4em;
   padding: 1px;
   margin: 5px;
+  text-align: center;
+
 }
 
 .hidden {
@@ -91,7 +93,7 @@ img {
   cursor: pointer;
 }
 
-.classic-bear {
+.bear {
   width: 200px;
   height: 200px;
 }
