@@ -3,8 +3,11 @@ class Player {
     this.name = playerName
     this.token = playerToken
     this.wins = 0
+    this.playerChoice
   }
-  // takeTurn() {
-  //
+  // humanTakeTurn/playerChoice(event) {
+  // this.playerChoice = event.target.classList.value
+
   // }
 }
+//computerMove()
