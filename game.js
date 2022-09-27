@@ -3,9 +3,9 @@ class Game {
     this.humanPlayer = new Player('human', '👩🏻')
     this.computerPlayer = new Player('computer', '💻')
     this.endOfRoundMessage
-    this.classicChoices = ['park ranger', 'wildfire', 'bear']
-    this.difficultChoices = ['park ranger', 'wildfire', 'bear', 'moose', 'storm']
-    this.isClassicGame
+    this.classicChoices = ['ranger', 'wildfire', 'bear']
+    this.difficultChoices = ['ranger', 'wildfire', 'bear', 'moose', 'storm']
+    this.isClassicGame = true
   }
 
 compareClassicResults() {
@@ -14,26 +14,26 @@ compareClassicResults() {
     if (playerChoice.includes("wildfire") && computerChoice === "bear") {
       this.endOfRoundMessage = "You won!"
       this.humanPlayer.wins += 1
-    } else if (playerChoice.includes("wildfire") && computerChoice === "park ranger") {
+    } else if (playerChoice.includes("wildfire") && computerChoice === "ranger") {
       this.endOfRoundMessage = "You lost!"
-      this.computerPlayer.wins +=1
+      this.computerPlayer.wins += 1
     } else if (playerChoice.includes("wildfire") && computerChoice === "wildfire") {
       this.endOfRoundMessage = "It's a draw!"
     } else if (playerChoice.includes("bear") && computerChoice === "wildfire") {
       this.endOfRoundMessage = "You lost!"
-      this.computerPlayer.wins +=1
-    } else if (playerChoice.includes("bear") && computerChoice === "park ranger") {
+      this.computerPlayer.wins += 1
+    } else if (playerChoice.includes("bear") && computerChoice === "ranger") {
       this.endOfRoundMessage = "You won!"
       this.humanPlayer.wins += 1
     } else if (playerChoice.includes("bear") && computerChoice === "bear") {
       this.endOfRoundMessage = "It's a draw!"
     } else if (playerChoice.includes("ranger") && computerChoice === "bear") {
-      this.computerPlayer.wins +=1
+      this.computerPlayer.wins += 1
       this.endOfRoundMessage = "You lost!"
     } else if (playerChoice.includes("ranger") && computerChoice === 'wildfire') {
       this.endOfRoundMessage = "You won!"
       this.humanPlayer.wins += 1
-    } else if (playerChoice.includes("ranger") && computerChoice === "park ranger") {
+    } else if (playerChoice.includes("ranger") && computerChoice === "ranger") {
       this.endOfRoundMessage = "It's a draw!"
     }
   }
@@ -47,7 +47,7 @@ compareDifficultResults() {
     } else if (playerChoice.includes("wildfire") && computerChoice === "moose") {
       this.endOfRoundMessage = "You won!"
       currentGame.humanPlayer.wins += 1
-    }else if (playerChoice.includes("wildfire") && computerChoice === "park ranger") {
+    } else if (playerChoice.includes("wildfire") && computerChoice === "ranger") {
       this.endOfRoundMessage = "You lost!"
       currentGame.computerPlayer.wins +=1
     } else if (playerChoice.includes("wildfire") && computerChoice === "storm") {
@@ -61,7 +61,7 @@ compareDifficultResults() {
     } else if (playerChoice.includes("bear") && computerChoice === "moose") {
       this.endOfRoundMessage = "You lost!"
       currentGame.computerPlayer.wins +=1
-    } else if (playerChoice.includes("bear") && computerChoice === "park ranger") {
+    } else if (playerChoice.includes("bear") && computerChoice === "ranger") {
       this.endOfRoundMessage = "You won!"
       currentGame.humanPlayer.wins += 1
     } else if (playerChoice.includes("bear") && computerChoice === "storm") {
@@ -70,18 +70,18 @@ compareDifficultResults() {
     } else if (playerChoice.includes("bear") && computerChoice === "bear") {
       this.endOfRoundMessage = "It's a draw!"
     } else if (playerChoice.includes("ranger") && computerChoice === "bear") {
-      currentGame.computerPlayer.wins +=1
+      currentGame.computerPlayer.wins += 1
       this.endOfRoundMessage = "You lost!"
     } else if (playerChoice.includes("ranger") && computerChoice === "storm") {
-      currentGame.computerPlayer.wins +=1
+      currentGame.computerPlayer.wins += 1
       this.endOfRoundMessage = "You lost!"
-    } else if (playerChoice.includes("ranger") && computerChoice === 'wildfire') {
+    } else if (playerChoice.includes("ranger") && computerChoice === "wildfire") {
       this.endOfRoundMessage = "You won!"
       currentGame.humanPlayer.wins += 1
     } else if (playerChoice.includes("ranger") && computerChoice === "moose") {
       this.endOfRoundMessage = "You won!"
       currentGame.humanPlayer.wins += 1
-    } else if (playerChoice.includes("ranger") && computerChoice === "park ranger") {
+    } else if (playerChoice.includes("ranger") && computerChoice === "ranger") {
       this.endOfRoundMessage = "It's a draw!"
     } else if (playerChoice.includes("moose") && computerChoice === "bear") {
       this.endOfRoundMessage = "You won!"
@@ -92,7 +92,7 @@ compareDifficultResults() {
     } else if (playerChoice.includes("moose") && computerChoice === "wildfire") {
       this.endOfRoundMessage = "You lost"
       currentGame.computerPlayer.wins += 1
-    } else if (playerChoice === "difficult-moose" && computerChoice === "park-ranger") {
+    } else if (playerChoice.includes("moose") && computerChoice === "ranger") {
       this.endOfRoundMessage = "You lost"
       currentGame.computerPlayer.wins += 1
     } else if (playerChoice.includes("moose") && computerChoice === "moose") {
@@ -100,7 +100,7 @@ compareDifficultResults() {
     } else if (playerChoice.includes("storm") && computerChoice === "wildfire") {
       this.endOfRoundMessage = "You won!"
       currentGame.humanPlayer.wins += 1
-    } else if (playerChoice.includes("storm") && computerChoice === "park ranger") {
+    } else if (playerChoice.includes("storm") && computerChoice === "ranger") {
       this.endOfRoundMessage = "You won!"
       currentGame.humanPlayer.wins += 1
     } else if (playerChoice.includes("storm") && computerChoice === "bear") {
