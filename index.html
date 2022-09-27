@@ -19,29 +19,31 @@
   </div>
     <section class="main-page">
       <div class="title-and-description">
-        <h1 class="page-title">Park Ranger, Bear, Wildfire</h1>
+        <h1 class="page-title">Ranger, Bear, Wildfire</h1>
         <p class="user-instructions">Choose your game!</p>
      </div>
       <section class="game-selector" id="classicGameSelector">
         <h2 class="game-type-title">Classic</h2>
-        <p class="rule">parker ranger > wildfire </p>
-        <p class="rule">bear > parker ranger</p>
+        <p class="rule">ranger > wildfire </p>
+        <p class="rule">bear > ranger</p>
         <p class="rule">wildfire > bear</p>
       </section>
       <section class="game-selector" id="difficultGameSelector">
         <h2 class="game-type-title">Difficult</h2>
-        <p class="rule">parker ranger > wildfire & moose </p>
-        <p class="rule">bear > park ranger & storm</p>
+        <p class="rule">ranger > wildfire & moose </p>
+        <p class="rule">bear > ranger & storm</p>
         <p class="rule">wildfire > bear & moose</p>
         <p class="rule">moose > bear & storm</p>
-        <p class="rule">storm > wildfire & park ranger</p>
+        <p class="rule">storm > wildfire & ranger</p>
       </section>
-      <section class="images hidden">
+      <section class="images">
         <img class="bear hidden" src="./assets/bear.png" alt="clipart of a brown bear cup">
-        <img class="park-ranger hidden" src="./assets/park-ranger2.png" alt="clipart of a women park ranger holding a walkie talkie">
-        <img class="wildfire hidden"src="./assets/wildfire-icon.png" alt="clipart of a fire burning four trees">
+        <img class="ranger hidden" src="./assets/ranger.png" alt="clipart of a women park ranger holding a walkie talkie">
+        <img class="wildfire hidden"src="./assets/wildfire.png" alt="clipart of a fire burning four trees">
         <img class="moose hidden" src="./assets/moose.png" alt="clipart of moose walking">
-        <img class="storm hidden" src="./assets/rain.png" alt="clipart of a cloud with rain drops">`
+        <img class="storm hidden" src="./assets/storm.png" alt="clipart of a cloud with rain drops">
+      </section>
+      <section class="player-choice-results">
       </section>
     </section>
     <section class="player-info" id="player1">
@@ -49,6 +51,7 @@
       <p class="player-description">Computer</p>
       <p class="wins-label">Wins: </p>
       <p class="wins-counter" id="winsCounterComputer">0</p>
+      <button class="reset-game hidden">Reset game?</button>
     </section>
     <script src="./game.js"></script>
     <script src="./player.js"></script>
