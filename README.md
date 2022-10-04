@@ -4,7 +4,7 @@
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
 
-  - Ranger-bear-wildfire is a web-based game that has the same rules as rock-paper-scissors. The difficult mode has five choices, ranger, wildfire, bear, moose and storm. This game is played against the computer, which randomly generates a choice. After a round of the game the results are displayed along with the score, and the game automatically resets. Visit the live site <a href="https://eleanorgruth.github.io/rock-paper-scissors/">here</a>.
+  - Ranger-bear-wildfire is a web-based game that has the same rules as rock-paper-scissors. The difficult mode has five choices, ranger, wildfire, bear, moose and storm. This game is played against the computer, which randomly generates a choice. After a round of the game the results are displayed along with the score, and the game automatically resets. Visit the live site <a href="https://eleanorgruth.github.io/romcom/">here</a>.
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
